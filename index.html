@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="./style.css" rel="stylesheet" />
+  <title>Weird Borders Test Image Scrolly</title>
+  </head>
+
+  <body>
+  <section id="scrolly-images" class="scrolly-container">
+    <div class="sticky-thing">
+      <div class="sticky-inner">
+        <img src="./assets/weird_borders-0.jpg">
+      </div>
+    </div>
+    <div class="scrolly-overlay">
+      <div class="step" id="step1">
+        <div>
+          <p>These separate areas all belong to the kanton Appenzeller-Inneroden. Strange right?</p>
+        </div>
+      </div>
+      <div class="step" id="step2">
+        <p>Even more surprising, are these two miniscule parcels that also belong to Apenzeller-Inneroden.</p>
+      </div>
+      <div class="step" id="step3">
+        <p>Both are Klosters, this text requires an analysis of the first kloster.</p>
+      </div>
+      <div class="step" id="step4">
+        <p>Both are Klosters, this text requires an analysis of the second kloster.</p>
+      </div>
+    </div>
+  </section>
+
+<script>  
+// FIRST SCROLLY
+d3.select("#step1").on('stepin', (e) => {
+  d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "./assets/weird_borders-0.jpg")
+})
+d3.select("#step2").on('stepin', (e) => {
+  d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "./assets/weird_borders-1.jpg")
+})
+d3.select("#step3").on('stepin', (e) => {
+  d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "./assets/weird_borders-2.jpg")
+})
+d3.select("#step4").on('stepin', (e) => {
+  d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "./assets/weird_borders-3.jpg")
+})
+
+// SCROLLAMA AND SCROLLER SETUPS
+const scrollerImg = scrollama();
+
+scrollerImg
+  .setup({
+    parent: document.querySelector("#scrolly-images"),
+    step: ".step",
+    offset: 0.7,
+    debug: false,
+  })
+  .onStepEnter(function ({ element, index, direction }) {
+    const event = new CustomEvent("stepin", { detail: { direction: direction } })
+    element.dispatchEvent(event)
+  })
+  .onStepExit(function ({ element, index, direction }) {
+    const event = new CustomEvent("stepout", { detail: { direction: direction } })
+    if (direction === "up" && element.previousElementSibling) {
+      const event = new CustomEvent("stepin", { detail: { direction: direction } })
+      element.previousElementSibling.dispatchEvent(event)
+    }
+  })
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,216 @@
+
+/* ARTICLE CSS */
+body {
+  margin: 0px;
+  background-color: white;
+}
+
+.editorial-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editorial {
+  width: 45%;
+  margin: 3rem 0;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+  background-color: white;
+  padding: 1rem 2rem;
+  border: solid 2px black;
+}
+
+.spacer {
+  margin-bottom: 10vh;
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 8px;
+  font-weight: 400;
+  color: white;
+}
+
+p {
+  font-size: 20px;
+}
+
+/* HEADER CSS */
+.title-content {
+  max-width: 640px;
+  text-align: center;
+  color: black;
+}
+
+.subhead {
+  font-size: 22px;
+  margin-top: 10px;
+  font-weight: 300;
+  font-family: "Bangers", system-ui;
+  color: white;
+}
+.hero-content {
+  max-width: 640px;
+  margin: 15vh auto 10vh auto;
+  text-align: center;
+}
+
+.divider {
+  width: 35%;
+  padding-top: 3vh;
+  margin: 0 auto 10vh auto;
+  border-bottom: 1px solid black;
+  opacity: 0.3;
+}
+
+.figure {
+  margin: 1rem 0px;
+  max-width: 55%;
+}
+
+.sticky-inner img {
+  width: 100%;
+  object-fit: contain;
+  height: 100vh;;
+}
+
+/* margin on mobile */
+@media (max-width: 640px) {
+  body {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .title-content {
+    /* padding-left: 0.5em;
+    padding-right: 0.5em; */
+    max-width: none;
+  }
+
+  .sticky-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .sticky-inner img {
+    max-width: none;
+    object-fit: cover;
+    height: 90%;
+  }
+
+  .editorial {
+    width: 90%;
+    margin: 0px;
+  }
+
+  .subhead {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+  .with-video-bg {
+    min-height: 70svh;
+  }
+  .step p {
+    font-size: 18px;
+  }
+  .figure {
+    max-width: 100%;
+  }
+  .divider {
+    margin-bottom: 5vh;
+  }
+  .hero-content {
+    margin: 0 auto 3rem auto;
+    text-align: center;
+  }
+}
+
+/* SCROLLY CSS */
+#scrolly {
+  position: relative;
+}
+
+.scrolly-overlay {
+  position: relative;
+  padding: 0rem 1rem;
+  max-width: 35rem;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.sticky-thing {
+  position: sticky;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  z-index: 1;
+  top: 0;
+  height: 100vh;
+  /* Center everything inside */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.step {
+  height: 80vh;
+}
+
+.step p {
+  text-align: left;
+  padding: 1.3rem;
+  font-size: 1.25rem;
+  font-family: "Bangers", system-ui;
+  border: black 2px solid;
+  background-color: white;
+}
+
+.hidden { visibility: hidden; }
+
+iframe,
+img,
+video {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: underline;
+  font-weight: 700;
+  color: black;
+}
+
+/* When it's less than 700 pixels wide, do normal scrollytelling */
+@media only screen and (min-width: 700px) {
+  #scrolly.side-by-side {
+    display: flex;
+  }
+
+  #scrolly.side-by-side > div {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75em;
+  }
+
+  #scrolly.side-by-side .scrolly-overlay {
+    margin-top: 70vh;
+    order: 0;
+    /* Change these to adjust sizing options */
+    min-width: 15rem;
+    max-width: 20rem;
+  }
+
+  #scrolly.side-by-side .sticky-thing {
+    order: 1;
+    flex-grow: 2;
+  }
+}
