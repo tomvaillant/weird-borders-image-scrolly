@@ -52,11 +52,6 @@ p {
   font-family: "Bangers", system-ui;
   color: white;
 }
-.hero-content {
-  max-width: 640px;
-  margin: 15vh auto 10vh auto;
-  text-align: center;
-}
 
 .divider {
   width: 35%;
@@ -73,7 +68,7 @@ p {
 
 .sticky-inner img {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   height: 100vh;;
 }
 
@@ -162,7 +157,7 @@ p {
 }
 
 .step {
-  height: 80vh;
+  height: 90vh;
 }
 
 .step p {
